@@ -19,16 +19,6 @@ public class RageEvents : MonoBehaviour
     public TextMeshProUGUI SwearText;
     public string[] SwearWords;
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Q))
-        {
-            InitValues();
-        }
-
-        CallRageEvent(0);
-    }
-
     public void HitMonitor()
     {
         if (EventIsOn)
@@ -57,6 +47,7 @@ public class RageEvents : MonoBehaviour
 
     public void CallRageEvent(int RageEventIndex)
     {
+        Debug.Log("ASd");
         if (RageEventIndex == 0)
             HitMonitor();
     }
@@ -84,6 +75,7 @@ public class RageEvents : MonoBehaviour
             SwearText.text = SwearWords[random];
         }
     }
+
 }
 
 
