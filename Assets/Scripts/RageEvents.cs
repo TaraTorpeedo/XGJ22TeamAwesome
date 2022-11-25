@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RageEvents : MonoBehaviour
 {
-    bool EventIsOn = false;
+    public bool EventIsOn = false;
 
     //ClickEventVariables
     int clicks;
@@ -15,15 +15,25 @@ public class RageEvents : MonoBehaviour
     KeyCode TheKey;
     public Slider RageSlider;
     public TextMeshProUGUI KeyIndicator;
+    public float rageIntencity;
 
     public TextMeshProUGUI SwearText;
     public string[] SwearWords;
+
+
+    private void Update()
+    {
+        if (EventIsOn)
+        {
+            CallRageEvent(0);
+        }
+    }
 
     public void HitMonitor()
     {
         if (EventIsOn)
         {
-            RageSlider.value += 0.01f;
+            RageSlider.value += Time.deltaTime * rageIntencity;
 
             if (Input.GetKeyDown(TheKey))
             {
@@ -47,7 +57,6 @@ public class RageEvents : MonoBehaviour
 
     public void CallRageEvent(int RageEventIndex)
     {
-        Debug.Log("ASd");
         if (RageEventIndex == 0)
             HitMonitor();
     }
@@ -59,7 +68,7 @@ public class RageEvents : MonoBehaviour
         KeyIndicator.gameObject.SetActive(false);
         SwearText.gameObject.SetActive(false);
     }
-    void InitValues()
+    public void InitValues()
     {
         if (!EventIsOn)
         {

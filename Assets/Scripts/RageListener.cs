@@ -10,7 +10,6 @@ public class RageListener : MonoBehaviour, IRage
 
     public void InvokeRage()
     {
-        Debug.Log("ASdaaa");
         rageEvent.Invoke();
     }
 
