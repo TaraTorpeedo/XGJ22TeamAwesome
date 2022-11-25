@@ -11,7 +11,7 @@ public class Programmer : MonoBehaviour, IInputReceiver
     [SerializeField] InputEvent Enter;
     [SerializeField] InputEvent Backspace;
     [SerializeField] InputEvent Tab;
-    [SerializeField] InputEvent Wasd;
+    [SerializeField] VectorInputEvent Wasd;
     [SerializeField] InputEvent Esc;
     
 
