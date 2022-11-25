@@ -28,7 +28,6 @@ public class TypeCode : MonoBehaviour
 
     public void StartTyping()
     {
-        Debug.Log("Started typing..");
         StartCoroutine(TypeText());
 
     }
@@ -45,7 +44,6 @@ public class TypeCode : MonoBehaviour
             UI.maxVisibleCharacters = UI.maxVisibleCharacters + 1;
             yield return _typingDelay;
         }
-        Debug.Log("Finished typing");
         Complete.Invoke();
     }
 }

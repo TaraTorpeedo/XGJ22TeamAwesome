@@ -13,11 +13,20 @@ public class Programmer : MonoBehaviour, IInputReceiver
     [SerializeField] InputEvent Tab;
     [SerializeField] VectorInputEvent Wasd;
     [SerializeField] InputEvent Esc;
-    
+
+    void Awake()
+    {
+#if UNITY_EDITOR
+        Debug.unityLogger.logEnabled = true;
+#else
+	    Debug.unityLogger.logEnabled = false;
+#endif
+    }
+
 
     public void OnRightClick(int state)
     {
-        if(state == 1)
+        if (state == 1)
             RightClick.Raise();
     }
 
@@ -29,31 +38,31 @@ public class Programmer : MonoBehaviour, IInputReceiver
 
     public void OnPressSpace(int state)
     {
-        if(state == 1)
+        if (state == 1)
             Space.Raise();
     }
 
     public void OnPressBackSpace(int state)
     {
-        if(state == 1)
+        if (state == 1)
             Backspace.Raise();
     }
 
     public void OnPressEnter(int state)
     {
-        if(state == 1)
+        if (state == 1)
             Enter.Raise();
     }
 
     public void OnPressEsc(int state)
     {
-        if(state==1)
+        if (state == 1)
             Esc.Raise();
     }
 
     public void OnPressTab(int state)
     {
-        if(state==1)
+        if (state == 1)
             Tab.Raise();
     }
     public void OnWASD(Vector2 wasd)
