@@ -25,6 +25,68 @@ public struct Script
         MemberFunction = memberFunction;
     }
 
+    public static Script CreateRandom()
+    {
+        return new Script()
+        {
+
+            MethodType = GetRandom(_methodTypes),
+            Name = GetRandom(_names),
+            ArgumentType = GetRandom(_argumentTypes),
+            Argument = GetRandom(_arguments),
+            Member = GetRandom(_members),
+            MemberFunction = GetRandom(_memberFunctions)
+        };
+    }
+
+    public static Script CreateRandomOfTypeT()
+    {
+        return new Script()
+        {
+
+            MethodType = GetRandom(_methodTypes),
+            Name = GetRandom(_names),
+            ArgumentType = "",
+            Argument = "",
+            Member = GetRandom(_memberFunctions),
+            MemberFunction = GetRandom(_names)
+        };
+    }
+
+    public static string GetRandom(string[] strings)
+    {
+        return strings[Random.Range(0, strings.Length)];
+    }
+
+    static string[] _methodTypes = new string[]
+    {
+        "void", "protected void", "virtual void"
+    };
+    static string[] _names = new string[]
+    {
+        "Update", "Start", "FixedUpdate", "OnEnable", "OnDestroy", "OnPressTab", "OnJump", "OnCommitAtrocities", "OnInteract", "Toggle", "GetServices"
+    };
+    static string[] _argumentTypes = new string[]
+    {
+        "int", "float", "string", "bool"
+    };
+    static string[] _arguments = new string[]
+    {
+        "state", "value", "currentValue", "arg", "asf", "foo", "bar", "baz", "val", "x", "y", "jumpForce"
+    };
+    static string[] _members = new string[]
+    {
+        "_input", "direction", "_direction", "myActions", "rb", "rigidBody", "fooBar", "animator", "player", "_player", "myController", "_services", "_gameService"
+    };
+    static string[] _memberFunctions = new string[]
+    {
+        "TabAction", "AddForce", "Jump", "Move", "Destroy", "Collide"
+        , "GetDataContainers", "Init", "GetComponent", "FindObjectOfType"
+        , "CommitAtrocities", "Toggle"
+    };
+
+
+
     public int CountCodeLength()
     {
         return MethodType.Length + MethodType.Length + Name.Length + ArgumentType.Length + Argument.Length + Member.Length + MemberFunction.Length;
@@ -89,7 +151,7 @@ public struct Script
 
         return sb.ToString();
     }
-    
+
     public string GetRawText()
     {
         StringBuilder sb = new StringBuilder(MethodType);

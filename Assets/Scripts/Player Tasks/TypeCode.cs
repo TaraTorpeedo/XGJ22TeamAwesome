@@ -13,8 +13,7 @@ public class TypeCode : BaseTask
     [SerializeField] string _codeBlock;
     [SerializeField] float _typingSpeed;
 
-    WaitForSeconds TypingDelay;
-
+    
     Script _script;
     string raw;
 
@@ -23,11 +22,8 @@ public class TypeCode : BaseTask
     {
         base.Start();
         SetState(-1);
-        _script = new Script(
-            "void", "Update", "", "", "FindObjectOfType", "RigidBody"
-            );
+        _script = Script.CreateRandomOfTypeT();
         Screen = GetComponent<TextMeshPro>();
-        TypingDelay = new WaitForSeconds(_typingSpeed);
         Screen.text = _script.GenerateMethodOfTypeT();
         ResetMe();
     }
@@ -72,14 +68,15 @@ public class TypeCode : BaseTask
 
     protected override void ResetMe()
     {
+        Screen.enabled = true;
+        _script = Script.CreateRandomOfTypeT();
+        raw = _script.GetRawText();
         Screen.maxVisibleCharacters = 0;
     }
 
     public override void Raise()
     {
         base.Raise();
-        Screen.enabled = true;
-        raw = _script.GetRawText();
         SetState(1);
         ResetMe();
     }

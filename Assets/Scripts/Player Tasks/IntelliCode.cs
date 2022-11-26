@@ -21,15 +21,7 @@ public class IntelliCode : BaseTask
     protected override void Start()
     {
         base.Start();
-        _script = new Script()
-        {
-            MethodType = "void",
-            Name = "PressTab",
-            ArgumentType = "int",
-            Argument = "state",
-            Member = "_input",
-            MemberFunction = "TabAction",
-        };
+        _script = Script.CreateRandom();
         InitializeScreen();
         SetState(-1);
     }
@@ -105,6 +97,7 @@ public class IntelliCode : BaseTask
 
     protected override void ResetMe()
     {
+        _script = Script.CreateRandom();
         Screen.maxVisibleCharacters = 0;
         SetState(0);
     }
