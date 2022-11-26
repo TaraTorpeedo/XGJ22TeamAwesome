@@ -8,23 +8,33 @@ public class SuggestionCode : MonoBehaviour
 
     TextMeshPro Screen;
 
-    int visibleLines;
-    // Start is called before the first frame update
-    void Awake()
+    int maxCharacters;
+    
+    public void Initialize()
     {
         Screen = GetComponent<TextMeshPro>();
-        visibleLines = 0;
-        Screen.maxVisibleLines = visibleLines;
+    }
+
+    public int CountOfVisibleCharacters()
+    {
+        return Screen.maxVisibleCharacters;
     }
 
     public void SetSuggestionText(string text)
     {
         Screen.text = text;
+        Screen.maxVisibleLines = 1;
+        maxCharacters = Screen.text.Length;
+        Debug.Log($"Max visible characters {maxCharacters} / {Screen.maxVisibleLines} lines");
     }
 
     public void ShowNextLine()
     {
-        visibleLines++;
-        Screen.maxVisibleLines = visibleLines;
+        Debug.Log($"Max visible characters {maxCharacters} / {Screen.maxVisibleLines} lines");
+        if (maxCharacters > Screen.maxVisibleCharacters)
+        {
+            Screen.maxVisibleLines++;
+        }
     }
+
 }
