@@ -49,8 +49,7 @@ public class RageEvents : MonoBehaviour
 
             if (RageSlider.value >= RageSlider.maxValue)
             {
-                Debug.Log("Lose");
-                EventIsOn = false;
+                Lose();
             }
         }
     }
@@ -83,6 +82,12 @@ public class RageEvents : MonoBehaviour
             SwearText.gameObject.SetActive(true);
             SwearText.text = SwearWords[random];
         }
+    }
+
+    void Lose()
+    {
+        EventIsOn = false;
+
     }
 
 }
