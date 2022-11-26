@@ -20,7 +20,7 @@ namespace Assets.Scripts.Extensions
         static string _argumentColor = "#9cdcfe"; //light blue
         static string _stringColor = "#d59d85";
         static string _returnColor = "#d8a0df";
-        static string _autocomplete = "#7d7d7d";
+        static string _autocomplete = "#3d3d3d";
         static string AppendColor(string color)
         {
             return _colorTag + color + ">";
