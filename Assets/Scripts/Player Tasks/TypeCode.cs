@@ -13,12 +13,12 @@ public class TypeCode : BaseTask
     [SerializeField] string _codeBlock;
     [SerializeField] float _typingSpeed;
 
-    WaitForSeconds _typingDelay;
+    WaitForSeconds TypingDelay;
 
     
     private void Start()
     {
-        _typingDelay = new WaitForSeconds(_typingSpeed);
+        TypingDelay = new WaitForSeconds(_typingSpeed);
         UI.text = _codeBlock;
         UI.maxVisibleCharacters = 0;
         
@@ -40,7 +40,7 @@ public class TypeCode : BaseTask
         while (UI.maxVisibleCharacters < _codeBlock.Length-(indexes.Count()*11*2))
         {
             UI.maxVisibleCharacters = UI.maxVisibleCharacters + 1;
-            yield return _typingDelay;
+            yield return TypingDelay;
         }
         Completed.Invoke();
     }

@@ -31,11 +31,11 @@ public struct Script
         sb.AddWhiteSpace();
 
         sb.Append('(');
-        sb.Append(ArgumentType.ApplyArgumentColor());
+        sb.Append(ArgumentType.ApplyMethodTypeColor());
 
         sb.AddWhiteSpace();
 
-        sb.Append(Argument);
+        sb.Append(Argument.ApplyArgumentColor());
         sb.AppendLine(")");
         sb.AppendLine("{");
 
@@ -84,15 +84,14 @@ public struct Script
 
     public string PlaceholderText()
     {
-
-        StringBuilder sb = new StringBuilder(MethodType.ApplySuggestionColor());
+        StringBuilder sb = new StringBuilder(MethodType.ApplyMethodTypeColor());
         sb.AddWhiteSpace();
-        sb.Append(Name.ApplySuggestionColor());
+        sb.Append(Name.ApplyPublicMethodColor());
 
         sb.AddWhiteSpace();
 
         sb.Append('(');
-        sb.Append(ArgumentType.ApplySuggestionColor());
+        sb.Append(ArgumentType.ApplyArgumentColor());
 
         sb.AddWhiteSpace();
 
