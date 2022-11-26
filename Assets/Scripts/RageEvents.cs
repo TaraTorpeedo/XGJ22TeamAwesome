@@ -22,8 +22,7 @@ public class RageEvents : MonoBehaviour
     public string[] SwearWords;
 
     public GameObject Player;
-
-
+    [SerializeField] TaskManager TaskManager;
     private void Update()
     {
         if (EventIsOn)
@@ -44,7 +43,7 @@ public class RageEvents : MonoBehaviour
             {
                 clicks++;
                 RageSlider.value -= 0.2f;
-                if (clicks >= clicksNeeded)
+                if (DefeatedRage())
                 {
                     Player.GetComponent<Animator>().SetBool("IsRaging", false);
                     Player.GetComponent<Animator>().SetBool("Chill", true);
@@ -52,6 +51,7 @@ public class RageEvents : MonoBehaviour
                     ResetValues();
                     EventIsOn = false;
                     RagePanel.SetActive(false);
+                    TaskManager.ActivateRandomTask();
                 }
             }
 
@@ -60,6 +60,11 @@ public class RageEvents : MonoBehaviour
                 Lose();
             }
         }
+    }
+
+    private bool DefeatedRage()
+    {
+        return clicks >= clicksNeeded;
     }
 
     public void CallRageEvent(int RageEventIndex)

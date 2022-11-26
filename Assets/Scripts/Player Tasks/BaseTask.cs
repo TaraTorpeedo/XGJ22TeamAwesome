@@ -8,6 +8,7 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
     [SerializeField] protected TaskManager taskManager;
     [SerializeField] protected UnityEvent Started;
     [SerializeField] protected UnityEvent Completed;
+    [SerializeField] protected RageRandomizer rageManager;
 
     protected virtual void Start()
     {
@@ -22,7 +23,8 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
     protected IEnumerator TaskIntermission()
     {
         yield return new WaitForSeconds(2f);
-        taskManager.ActivateRandomTask(this);
+        Hide();
+        rageManager.RaiseRandomRage();
 
     }
 
