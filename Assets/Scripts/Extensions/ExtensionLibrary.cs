@@ -20,7 +20,7 @@ namespace Assets.Scripts.Extensions
         static string _argumentColor = "#9cdcfe"; //light blue
         static string _stringColor = "#d59d85";
         static string _returnColor = "#d8a0df";
-
+        static string _autocomplete = "#7d7d7d";
         static string AppendColor(string color)
         {
             return _colorTag + color + ">";
@@ -59,6 +59,10 @@ namespace Assets.Scripts.Extensions
         public static string ApplyReturnColor(this string str)
         {
             return AppendColor(_returnColor) + str + _colorClosingTag;
+        }
+        public static string ApplySuggestionColor(this string str)
+        {
+            return AppendColor(_autocomplete) + str + _colorClosingTag;
         }
 
 

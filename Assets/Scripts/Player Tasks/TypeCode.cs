@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TypeCode : MonoBehaviour
+public class TypeCode : BaseTask
 {
     [SerializeField] TextMeshProUGUI UI;
     [TextArea(15,20)]
@@ -15,9 +15,7 @@ public class TypeCode : MonoBehaviour
 
     WaitForSeconds _typingDelay;
 
-    [SerializeField] UnityEvent Started;
-    [SerializeField] UnityEvent Complete;
-
+    
     private void Start()
     {
         _typingDelay = new WaitForSeconds(_typingSpeed);
@@ -44,6 +42,6 @@ public class TypeCode : MonoBehaviour
             UI.maxVisibleCharacters = UI.maxVisibleCharacters + 1;
             yield return _typingDelay;
         }
-        Complete.Invoke();
+        Completed.Invoke();
     }
 }
