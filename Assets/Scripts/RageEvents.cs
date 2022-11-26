@@ -13,12 +13,15 @@ public class RageEvents : MonoBehaviour
     public int clicksNeeded;
     public KeyCode[] KeysToSmash;
     KeyCode TheKey;
+    public GameObject RagePanel;
     public Slider RageSlider;
     public TextMeshProUGUI KeyIndicator;
     public float rageIntencity;
 
     public TextMeshProUGUI SwearText;
     public string[] SwearWords;
+
+    public GameObject Player;
 
 
     private void Update()
@@ -34,6 +37,8 @@ public class RageEvents : MonoBehaviour
         if (EventIsOn)
         {
             RageSlider.value += Time.deltaTime * rageIntencity;
+            Player.GetComponent<Animator>().SetBool("IsRaging", true);
+            RagePanel.SetActive(true);
 
             if (Input.GetKeyDown(TheKey))
             {
@@ -41,9 +46,12 @@ public class RageEvents : MonoBehaviour
                 RageSlider.value -= 0.2f;
                 if (clicks >= clicksNeeded)
                 {
+                    Player.GetComponent<Animator>().SetBool("IsRaging", false);
+                    Player.GetComponent<Animator>().SetBool("Chill", true);
                     Debug.Log("You did it");
                     ResetValues();
                     EventIsOn = false;
+                    RagePanel.SetActive(false);
                 }
             }
 
@@ -87,6 +95,9 @@ public class RageEvents : MonoBehaviour
     void Lose()
     {
         EventIsOn = false;
+
+        Player.GetComponent<Animator>().SetBool("IsRaging", false);
+        Player.GetComponent<Animator>().SetBool("HitMonitor", true);
 
     }
 
