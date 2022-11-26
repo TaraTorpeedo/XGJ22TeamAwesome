@@ -30,6 +30,9 @@ public class SittingNPC : MonoBehaviour
 
         anim.SetInteger("sittingIndex", index);
 
+        float rnd = Random.Range(0.5f, 1.5f);
+        anim.speed = rnd;
+
     }
 
 }

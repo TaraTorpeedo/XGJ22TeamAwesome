@@ -22,8 +22,8 @@ public class AnalogClock : MonoBehaviour
     void Update()
     {
 
-        hourHand.rotation = Quaternion.Euler(0, 0, -timeManager.GetHour() * hoursToDegrees);
-        minuteHand.rotation = Quaternion.Euler(0, 0, -timeManager.GetMinutes() * minutesToDegrees);
+        hourHand.localRotation = Quaternion.Euler(0, 0, timeManager.GetHour() * hoursToDegrees);
+        minuteHand.localRotation = Quaternion.Euler(0, 0, timeManager.GetMinutes() * minutesToDegrees);
 
 
     }
