@@ -9,8 +9,11 @@ public class Calendar : MonoBehaviour
     public TimeManager timeManager;
 
     bool isNewDay = true;
+    bool saturdayDone = false;
 
     public GameObject FridayCard, SaturdayCard;
+
+    public int StartHour;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,7 @@ public class Calendar : MonoBehaviour
     {
         if (timeManager != null)
         {
-            if (timeManager.GetHour() > 23 && timeManager.GetMinutes() > 59)
+            if (timeManager.GetHour() > 23 - StartHour && timeManager.GetMinutes() > 59)
             {
                 if (isNewDay)
                 {
@@ -38,11 +41,7 @@ public class Calendar : MonoBehaviour
                     {
                         anim.SetBool("isSunday", true);
                         StartCoroutine(destroyCard(SaturdayCard));
-                    }
-                    else
-                    {
-                        Debug.Log("Win");
-                        Time.timeScale = 0;
+                        saturdayDone = true;
                     }
                 }
 
@@ -50,6 +49,18 @@ public class Calendar : MonoBehaviour
             if (timeManager.GetHour() < 2)
             {
                 isNewDay = true;
+            }
+
+            if (saturdayDone)
+            {
+                if (timeManager.GetHour() - StartHour * -1 >= StartHour)
+                {
+                    if (timeManager.GetHour() - StartHour * -1 < 20)
+                    {
+                        Debug.Log("Win");
+                        Time.timeScale = 0;
+                    }
+                }
             }
         }
     }

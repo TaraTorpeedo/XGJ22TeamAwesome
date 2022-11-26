@@ -10,13 +10,19 @@ public class TimeManager : MonoBehaviour
     float totalTime = 0;
     float currentTime = 0;
 
+    public bool runTime = false;
+
     // Update is called once per frame
     void Update()
     {
-        totalTime += Time.deltaTime;
-        currentTime = totalTime % dayDuration;
+        if (Input.GetKeyDown(KeyCode.S))
+            runTime = true;
 
-        Debug.Log(GetHour());
+        if (runTime)
+        {
+            totalTime += Time.deltaTime;
+            currentTime = totalTime % dayDuration;
+        }
     }
 
     public float GetHour()
