@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class TypeCode : BaseTask
 {
-    [SerializeField] TextMeshPro Screen;
+     TextMeshPro Screen;
     [TextArea(15, 20)]
     [SerializeField] string _codeBlock;
     [SerializeField] float _typingSpeed;
@@ -77,6 +77,7 @@ public class TypeCode : BaseTask
 
     public override void Raise()
     {
+        base.Raise();
         Screen.enabled = true;
         raw = _script.GetRawText();
         SetState(1);
@@ -85,6 +86,7 @@ public class TypeCode : BaseTask
 
     public override void Hide()
     {
+        base.Hide();
         Screen.enabled = false;
         SetState(-1);
     }

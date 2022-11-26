@@ -111,12 +111,14 @@ public class IntelliCode : BaseTask
 
     public override void Hide()
     {
+        base.Hide();
         Debug.Log($"Hide {gameObject.name}");
         Screen.enabled = false;
     }
 
     public override void Raise()
     {
+        base.Raise();
         Screen.enabled = true;
         ResetMe();
         SetState(0);

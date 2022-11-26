@@ -9,9 +9,10 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
     [SerializeField] protected UnityEvent Started;
     [SerializeField] protected UnityEvent Completed;
     [SerializeField] protected RageRandomizer rageManager;
-
+    protected RectTransform rect;
     protected virtual void Start()
     {
+        rect = GetComponent<RectTransform>();
         taskManager.Add(this);
     }
 
@@ -28,9 +29,15 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
 
     }
 
-    public abstract void Hide();
+    public virtual void Hide()
+    {
+        rect.localScale = Vector2.one;
+    }
 
-    public abstract void Raise();
+    public virtual void Raise()
+    {
+        rect.localScale = Vector3.one;
 
-    [SerializeField] protected abstract void ResetMe();
+    }
+    protected abstract void ResetMe();
 }
