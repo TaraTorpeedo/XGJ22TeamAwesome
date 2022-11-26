@@ -35,6 +35,7 @@ public class RageEvents : MonoBehaviour
     {
         if (EventIsOn)
         {
+            AudioManager.instance.Play("Rage");
             RageSlider.value += Time.deltaTime * rageIntencity;
             Player.GetComponent<Animator>().SetBool("IsRaging", true);
             RagePanel.SetActive(true);
@@ -71,6 +72,7 @@ public class RageEvents : MonoBehaviour
     {
         if (RageEventIndex == 0)
             HitMonitor();
+
     }
 
     void ResetValues()
