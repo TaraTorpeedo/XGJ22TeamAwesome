@@ -24,9 +24,11 @@ public class CommitEvent : MonoBehaviour
                 pushButton.SetActive(true);
                 fetchButtonUI.SetActive(false);
                 commitInput.text = string.Empty;
+                AudioManager.instance.Play("Typing");
             }
             if (hit.transform.name == pushButton.name)
             {
+                AudioManager.instance.Play("Click");
                 //taski complite
             }
         }
