@@ -12,12 +12,14 @@ public class TimeManager : MonoBehaviour
 
     public bool runTime = false;
 
+    private void Start()
+    {
+        runTime = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-            runTime = true;
-
         if (runTime)
         {
             totalTime += Time.deltaTime;
