@@ -31,6 +31,7 @@ public class IntelliCode : BaseTask
             MemberFunction = "TabAction",
         };
         InitializeScreen();
+        SetState(-1);
     }
 
     private void InitializeScreen()
