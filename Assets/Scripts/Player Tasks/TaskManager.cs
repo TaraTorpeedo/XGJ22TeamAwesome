@@ -7,9 +7,8 @@ public class TaskManager : ScriptableObject
 {
     List<IGameTask> tasks = new List<IGameTask>();
 
-    public void ActivateRandomTask(IGameTask previousTask)
+    public void ActivateRandomTask()
     {
-        previousTask.Hide();
         int rand = Random.Range(0, tasks.Count);
         tasks[rand].Raise();
         Debug.Log($"Start task {rand}");
