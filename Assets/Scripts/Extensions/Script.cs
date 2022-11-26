@@ -12,14 +12,52 @@ public struct Script
     public string ArgumentType { get; set; }
     public string Argument { get; set; }
 
-    [TextArea(15, 20)]
-    public string CodeBlock;
     public string Member;
     public string MemberFunction;
+
+    public Script(string methodType, string name, string argumentType, string argument, string member, string memberFunction)
+    {
+        MethodType = methodType;
+        Name = name;
+        ArgumentType = argumentType;
+        Argument = argument;
+        Member = member;
+        MemberFunction = memberFunction;
+    }
 
     public int CountCodeLength()
     {
         return MethodType.Length + MethodType.Length + Name.Length + ArgumentType.Length + Argument.Length + Member.Length + MemberFunction.Length;
+    }
+
+    public string GenerateMethodOfTypeT()
+    {
+        StringBuilder sb = new StringBuilder(MethodType.ApplyMethodTypeColor());
+        sb.AddWhiteSpace();
+        sb.Append(Name.ApplyPublicMethodColor());
+
+        sb.AddWhiteSpace();
+
+        sb.Append('(');
+        sb.Append(ArgumentType.ApplyMethodTypeColor());
+
+        sb.AddWhiteSpace();
+
+        sb.Append(Argument.ApplyArgumentColor());
+        sb.AppendLine(")");
+        sb.AppendLine("{");
+
+        sb.Indent();
+        sb.Append(Member.ApplyPublicMethodColor());
+        sb.WrapInAngleBrackets(MemberFunction.ApplyClassColor());
+
+        sb.WrapInParenthesis(Argument.ApplyArgumentColor());
+
+        sb.AddSemiColon();
+        sb.AppendLine("}");
+
+
+        return sb.ToString();
     }
 
     public string GenerateCode()

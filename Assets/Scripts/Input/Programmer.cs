@@ -67,6 +67,6 @@ public class Programmer : MonoBehaviour, IInputReceiver
     }
     public void OnWASD(Vector2 wasd)
     {
-        Debug.Log(wasd);
+        Wasd.Raise(wasd);
     }
 }

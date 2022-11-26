@@ -6,12 +6,12 @@ using UnityEngine.Events;
 public class VectorInputEventListener : MonoBehaviour
 {
     [SerializeField] VectorInputEvent _inputEvent;
-    [SerializeField] UnityEvent<Vector2> _respone;
+    [SerializeField] UnityEvent<Vector2> Response;
 
 
     public void Invoke(Vector2 input)
     {
-        _respone.Invoke(input);
+        Response.Invoke(input);
     }
     private void OnEnable()
     {

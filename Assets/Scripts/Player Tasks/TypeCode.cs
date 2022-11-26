@@ -8,40 +8,90 @@ using UnityEngine.Events;
 
 public class TypeCode : BaseTask
 {
-    [SerializeField] TextMeshProUGUI UI;
-    [TextArea(15,20)]
+    [SerializeField] TextMeshPro Screen;
+    [TextArea(15, 20)]
     [SerializeField] string _codeBlock;
     [SerializeField] float _typingSpeed;
 
     WaitForSeconds TypingDelay;
 
-    
-    private void Start()
+    Script _script;
+    string raw;
+
+    [SerializeField] IntData typeState;
+    protected override void Start()
     {
+        base.Start();
+        SetState(-1);
+        _script = new Script(
+            "void", "Update", "", "", "FindObjectOfType", "RigidBody"
+            );
+        Screen = GetComponent<TextMeshPro>();
         TypingDelay = new WaitForSeconds(_typingSpeed);
-        UI.text = _codeBlock;
-        UI.maxVisibleCharacters = 0;
-        
+        Screen.text = _script.GenerateMethodOfTypeT();
+        ResetMe();
+    }
+
+    private void SetState(int state)
+    {
+        typeState.Value = state;
     }
 
     public void StartTyping()
     {
-        StartCoroutine(TypeText());
+        if (typeState.Value == 1)
+            TypeText();
 
     }
 
-    IEnumerator TypeText()
+    public void TypeCodeStuff(Vector2 v)
     {
-        var indexes = _codeBlock.AllIndexesOf("<color");
-        yield return new WaitForEndOfFrame();
-        Started.Invoke();
+        Debug.Log("typing");
+        StartTyping();
+    }
 
-        UI.maxVisibleCharacters = 0;
-        while (UI.maxVisibleCharacters < _codeBlock.Length-(indexes.Count()*11*2))
+    private void OnDisable()
+    {
+        Debug.Log("Disabled");
+        ResetMe();
+    }
+
+    void TypeText()
+    {
+        if (Screen.maxVisibleCharacters < raw.Length)
         {
-            UI.maxVisibleCharacters = UI.maxVisibleCharacters + 1;
-            yield return TypingDelay;
+            Screen.maxVisibleCharacters = Screen.maxVisibleCharacters + 1;
         }
-        Completed.Invoke();
+        else
+        {
+
+            Completed.Invoke();
+            Complete();
+        }
+    }
+
+    protected override void ResetMe()
+    {
+        Screen.maxVisibleCharacters = 0;
+    }
+
+    public override void Raise()
+    {
+        Screen.enabled = true;
+        raw = _script.GetRawText();
+        SetState(1);
+        ResetMe();
+    }
+
+    public override void Hide()
+    {
+        Screen.enabled = false;
+        SetState(-1);
+    }
+
+    public override void Complete()
+    {
+        SetState(-1);
+        base.Complete();
     }
 }

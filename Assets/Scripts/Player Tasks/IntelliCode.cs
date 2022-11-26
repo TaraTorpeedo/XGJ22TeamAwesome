@@ -3,21 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class IntelliCode : BaseTask
 {
-
+    [SerializeField] IntData data;
+    [SerializeField] UnityEvent PhaseOneCompleted;
     TextMeshPro Screen;
     Script _script;
 
-
+    int _taskState = 0;
     [SerializeField] float typingSpeed = 0.1f;
     int length;
     string raw;
     WaitForSeconds TypingDelay;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         _script = new Script()
         {
             MethodType = "void",
@@ -26,9 +29,9 @@ public class IntelliCode : BaseTask
             Argument = "state",
             Member = "_input",
             MemberFunction = "TabAction",
-            CodeBlock = "Jotain"
         };
         InitializeScreen();
+        SetState(-1);
     }
 
     private void InitializeScreen()
@@ -37,14 +40,19 @@ public class IntelliCode : BaseTask
 
         Screen = GetComponent<TextMeshPro>();
         Screen.text = _script.GenerateCode();
-        Screen.maxVisibleCharacters = 0;
+        ResetMe();
     }
 
 
-    public void AutoComplete()
+    public void StartCoding()
     {
         if (Screen != null)
-            StartCoroutine(TypeNextLine());
+        {
+            if(_taskState == 0)
+                StartCoroutine(TypeNextLine());
+            if (_taskState == 1)
+                Complete();
+        }
     }
 
     public void SuggestCode()
@@ -52,14 +60,18 @@ public class IntelliCode : BaseTask
         Screen.text = _script.PlaceholderText();
     }
 
-    public void TabText()
+    public override void Complete()
     {
         Debug.Log("Complete");
+        SetState(-1);
         Screen.text = _script.GenerateCode();
+        Completed.Invoke();
+        base.Complete();
     }
 
     IEnumerator TypeNextLine()
     {
+        SetState(-1);
         yield return new WaitForEndOfFrame();
         Started.Invoke();
         Screen.maxVisibleCharacters = 0;
@@ -72,11 +84,42 @@ public class IntelliCode : BaseTask
             {
                 yield return new WaitForSeconds(2f);
                 Screen.maxVisibleCharacters += _script.Member.Length + _script.MemberFunction.Length + 4;
+                SetState(1);
                 break;
             }
             yield return TypingDelay;
         }
-        Completed.Invoke();
+        PhaseOneCompleted.Invoke();
+    }
+
+    private void SetState(int state)
+    {
+        _taskState = state;
+        data.Value = _taskState;
+    }
+
+    private void OnDisable()
+    {
+        ResetMe();
+    }
+
+    protected override void ResetMe()
+    {
+        Screen.maxVisibleCharacters = 0;
+        SetState(0);
+    }
+
+    public override void Hide()
+    {
+        Debug.Log($"Hide {gameObject.name}");
+        Screen.enabled = false;
+    }
+
+    public override void Raise()
+    {
+        Screen.enabled = true;
+        ResetMe();
+        SetState(0);
     }
 
     /*

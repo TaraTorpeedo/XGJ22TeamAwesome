@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4087533097333485395}
   - component: {fileID: 4087533097333485394}
   - component: {fileID: 4087533097333485392}
-  - component: {fileID: 4087533097333485396}
+  - component: {fileID: 239538133}
   m_Layer: 5
   m_Name: Intellicode
   m_TagString: Untagged
@@ -28,7 +28,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4087533097333485390}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -95,13 +95,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9221bf09eefeed843aae3966da4ac6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taskManager: {fileID: 11400000, guid: eee2309fc236c2d4a95f7c8149ab31dd, type: 2}
   Started:
     m_PersistentCalls:
+      m_Calls: []
+  Completed:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4087533097333485394}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: RandomTasker, Assembly-CSharp
+        m_MethodName: ActivateTask
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -110,7 +114,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Completed:
+  data: {fileID: 11400000, guid: 8ef8fad6f1bd04446b1dba8d151fc2a2, type: 2}
+  PhaseOneCompleted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4087533097333485395}
@@ -125,7 +130,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4087533097333485396}
+      - m_Target: {fileID: 239538133}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -156,7 +161,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4087533097333485395}
         m_TargetAssemblyTypeName: IntelliCode, Assembly-CSharp
-        m_MethodName: AutoComplete
+        m_MethodName: StartCoding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -259,7 +264,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 4087533097333485393}
   m_maskType: 0
---- !u!114 &4087533097333485396
+--- !u!114 &239538133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,22 +273,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4087533097333485390}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b316ed51a45885744bd73c6c7e3616e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fa5176da15e562439520cf168c54850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputEvent: {fileID: 11400000, guid: f019b583f52f1004db11fea0cd8a674b, type: 2}
-  _respone:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4087533097333485395}
-        m_TargetAssemblyTypeName: IntelliCode, Assembly-CSharp
-        m_MethodName: TabText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _prompt: Tab to autocomplete code
+  _promptData: {fileID: 11400000, guid: 97ac8ad3ed9ce9f4aba61bcbb0682090, type: 2}
