@@ -15,6 +15,7 @@ public class InputEventListener : MonoBehaviour
     }
     private void OnEnable()
     {
+        Debug.Log("Add me, "+ gameObject.name);
         _inputEvent.AddListener(this);
     }
     private void OnDisable()

@@ -85,6 +85,13 @@ namespace Assets.Scripts.Extensions
             sb.Append(value);
             sb.Append(')');
         }
+
+        public static void WrapInAngleBrackets(this StringBuilder sb, string value)
+        {
+            sb.Append('<');
+            sb.Append(value);
+            sb.Append('>');
+        }
     }
 
 }
