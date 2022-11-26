@@ -62,6 +62,7 @@ public void Update()
             if (animator.GetAnimatorTransitionInfo(0).normalizedTime >= 0.9f)
             {
                 isDrinking = false;
+                AudioManager.instance.Play("Cup");
             }
         }
 
