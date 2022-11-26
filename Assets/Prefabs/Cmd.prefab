@@ -101,7 +101,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.05
+  m_fontSize: 1.3
   m_fontSizeBase: 1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -155,9 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e27a7a65fbfca49ae767f21867d777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 2229156175914181035}
-  _codeBlock: "<color=\"blue\">void Update</color>()\n{\n\t<color=\"yellow\">FindObjectOfType</color><<color=\"green\">Camera</color>>();\n}"
-  _typingSpeed: 0.1
   Started:
     m_PersistentCalls:
       m_Calls:
@@ -173,9 +170,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Complete:
+  Completed:
     m_PersistentCalls:
       m_Calls: []
+  UI: {fileID: 2229156175914181035}
+  _codeBlock: "<color=\"blue\">void Update</color>()\n{\n\t<color=\"yellow\">FindObjectOfType</color><<color=\"green\">Camera</color>>();\n}"
+  _typingSpeed: 0.1
 --- !u!114 &2229156175914181032
 MonoBehaviour:
   m_ObjectHideFlags: 0
