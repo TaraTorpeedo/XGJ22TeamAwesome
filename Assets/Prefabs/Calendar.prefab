@@ -275,7 +275,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4734106720499675455}
-  m_LocalRotation: {x: -0, y: -0.95485866, z: -0, w: 0.29706046}
+  m_LocalRotation: {x: 0, y: -0.9548594, z: 0, w: 0.29705825}
   m_LocalPosition: {x: 1.625, y: 0, z: -4.846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   FridayCard: {fileID: 1611638275003895817}
   SaturdayCard: {fileID: 7394235480061206625}
+  StartHour: 17
 --- !u!1 &7394235480061206625
 GameObject:
   m_ObjectHideFlags: 0
