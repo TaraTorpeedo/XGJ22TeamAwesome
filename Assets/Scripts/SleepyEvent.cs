@@ -108,6 +108,7 @@ public class SleepyEvent : BaseTask
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+        Debug.Log(hit.transform.name);
             if (hit.transform.name == cup.name)
             {
                 StartCoroutine(WaitToSip());
