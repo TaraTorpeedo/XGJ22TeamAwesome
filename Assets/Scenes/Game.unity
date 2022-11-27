@@ -3459,7 +3459,8 @@ PrefabInstance:
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 1376415829}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8968684855810359572, guid: 782ea513041391b49920c3f166d5b973, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 782ea513041391b49920c3f166d5b973, type: 3}
 --- !u!1 &698866375
 GameObject:
@@ -3920,7 +3921,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832616467
 GameObject:
@@ -6242,7 +6243,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376415829
 GameObject:
@@ -6445,7 +6446,7 @@ RectTransform:
   m_Children:
   - {fileID: 1670347515}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12804,6 +12805,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  ScriptFactory: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da, type: 2}
   typingSpeed: 0.1
 --- !u!114 &6051496838894652361
 MonoBehaviour:
@@ -13113,6 +13115,7 @@ MonoBehaviour:
   rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
   _codeBlock: "<color=\"blue\">void Update</color>()\n{\n\t<color=\"yellow\">FindObjectOfType</color><<color=\"green\">Camera</color>>();\n}"
   _typingSpeed: 0.1
+  ScriptFactory: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da, type: 2}
   typeState: {fileID: 11400000, guid: 33483616ea94ee043ab2af613c13dce8, type: 2}
 --- !u!114 &6051496839133266962
 MonoBehaviour:
