@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2229156175732618911}
   - component: {fileID: 2229156175732618910}
   - component: {fileID: 2229156175732618914}
+  - component: {fileID: 6698675541873124068}
   m_Layer: 5
   m_Name: Cmd
   m_TagString: Untagged
@@ -72,9 +73,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Screen: {fileID: 0}
+  rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
   _codeBlock: "<color=\"blue\">void Update</color>()\n{\n\t<color=\"yellow\">FindObjectOfType</color><<color=\"green\">Camera</color>>();\n}"
   _typingSpeed: 0.1
+  ScriptFactory: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da, type: 2}
   typeState: {fileID: 11400000, guid: 33483616ea94ee043ab2af613c13dce8, type: 2}
 --- !u!114 &2229156175914181032
 MonoBehaviour:
@@ -267,3 +269,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6698675541873124068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229156175914181037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa5176da15e562439520cf168c54850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prompt: Type code with WASD and Space
+  _promptData: {fileID: 11400000, guid: 97ac8ad3ed9ce9f4aba61bcbb0682090, type: 2}

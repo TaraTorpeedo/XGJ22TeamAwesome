@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 using Assets.Scripts.Extensions;
 
-public struct Script
+public class Script
 {
 
     public string MethodType { get; set; }
@@ -15,15 +15,8 @@ public struct Script
     public string Member;
     public string MemberFunction;
 
-    public Script(string methodType, string name, string argumentType, string argument, string member, string memberFunction)
-    {
-        MethodType = methodType;
-        Name = name;
-        ArgumentType = argumentType;
-        Argument = argument;
-        Member = member;
-        MemberFunction = memberFunction;
-    }
+
+
 
     public int CountCodeLength()
     {
@@ -89,7 +82,7 @@ public struct Script
 
         return sb.ToString();
     }
-    
+
     public string GetRawText()
     {
         StringBuilder sb = new StringBuilder(MethodType);

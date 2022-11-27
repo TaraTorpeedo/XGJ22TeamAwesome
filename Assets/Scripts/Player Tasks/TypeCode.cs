@@ -13,23 +13,29 @@ public class TypeCode : BaseTask
     [SerializeField] string _codeBlock;
     [SerializeField] float _typingSpeed;
 
-    WaitForSeconds TypingDelay;
+    [SerializeField] ScriptFactory ScriptFactory;
 
-    Script _script;
-    string raw;
 
+    Script Script = new Script();
+    string _raw;
     [SerializeField] IntData typeState;
     protected override void Start()
     {
         base.Start();
         SetState(-1);
-        _script = new Script(
-            "void", "Update", "", "", "FindObjectOfType", "RigidBody"
-            );
         Screen = GetComponent<TextMeshPro>();
-        TypingDelay = new WaitForSeconds(_typingSpeed);
-        Screen.text = _script.GenerateMethodOfTypeT();
+        GetRandomScript();
+        
         ResetMe();
+    }
+
+    private void GetRandomScript()
+    {
+        ScriptFactory.CreateRandomOfTypeT(Script);
+        _raw = Script.GetRawText();
+        Screen.text = Script.GenerateMethodOfTypeT();
+        Debug.Log($"get new type script {Script.MethodType} {Script.Name}");
+        Debug.Log(_raw);
     }
 
     private void SetState(int state)
@@ -46,7 +52,6 @@ public class TypeCode : BaseTask
 
     public void TypeCodeStuff(Vector2 v)
     {
-        Debug.Log("typing");
         StartTyping();
     }
 
@@ -58,7 +63,7 @@ public class TypeCode : BaseTask
 
     void TypeText()
     {
-        if (Screen.maxVisibleCharacters < raw.Length)
+        if (Screen.maxVisibleCharacters < _raw.Length)
         {
             Screen.maxVisibleCharacters = Screen.maxVisibleCharacters + 1;
         }
@@ -72,16 +77,17 @@ public class TypeCode : BaseTask
 
     protected override void ResetMe()
     {
+        Screen.enabled = true;
+        GetRandomScript();
+        _raw = Script.GetRawText();
         Screen.maxVisibleCharacters = 0;
     }
 
     public override void Raise()
     {
         base.Raise();
-        Screen.enabled = true;
-        raw = _script.GetRawText();
-        SetState(1);
         ResetMe();
+        SetState(1);
     }
 
     public override void Hide()

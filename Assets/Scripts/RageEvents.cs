@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RageEvents : MonoBehaviour
 {
     public bool EventIsOn = false;
+    public GameObject GameOverScreen;
 
     //ClickEventVariables
     int clicks;
@@ -15,6 +16,7 @@ public class RageEvents : MonoBehaviour
     KeyCode TheKey;
     public GameObject RagePanel;
     public Slider RageSlider;
+    public Image SliderFill;
     public TextMeshProUGUI KeyIndicator;
     public float rageIntencity;
 
@@ -35,8 +37,9 @@ public class RageEvents : MonoBehaviour
     {
         if (EventIsOn)
         {
-            AudioManager.instance.Play("Rage");
+            //AudioManager.instance.Play("Rage");
             RageSlider.value += Time.deltaTime * rageIntencity;
+            SliderFill.color = new Color(1, 1 - RageSlider.value / 10, 1 - RageSlider.value / 10);
             Player.GetComponent<Animator>().SetBool("IsRaging", true);
             RagePanel.SetActive(true);
 
@@ -105,6 +108,7 @@ public class RageEvents : MonoBehaviour
 
         Player.GetComponent<Animator>().SetBool("IsRaging", false);
         Player.GetComponent<Animator>().SetBool("HitMonitor", true);
+        GameOverScreen.SetActive(true);
 
     }
 
