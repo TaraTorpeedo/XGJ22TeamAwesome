@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class SleepyEvent : MonoBehaviour
+public class SleepyEvent : BaseTask
 {
     [SerializeField] private Volume volume;
     [SerializeField] private float blinkSpeedMin = 0.5f;
@@ -14,19 +14,19 @@ public class SleepyEvent : MonoBehaviour
     private Vignette vignette = null;
     private float eyesCloseValue = 0.0f;
     private float eyesOpenValue = 0.9f;
-    private bool isCoffeeDrinked = false;
+    private bool isCoffeeDrinked = true;
     private bool isDrinking = false;
     private Vector3 cupPos;
 
-    public void Start()
+    protected override void Start()
     {
+        base.Start();
         cupPos = cup.transform.position;
         volume.sharedProfile.TryGet<Vignette>(out vignette);
+        ResetMe();
     }
 
-   
-
-public void Update()
+    public void Update()
     {
         if (vignette != null)
         {
@@ -100,10 +100,12 @@ public void Update()
                 vignette.intensity.value = 0.0f;
                 ResetEyesValue();
                 animator.SetBool("IsDrinking", true);
+                Complete();
             }
         }
 
     }
+    
     private void ResetEyesValue()
     {
         eyesOpenValue = 0.9f;
@@ -111,4 +113,32 @@ public void Update()
     }
 
     private float ApplyBlink() => Random.Range(0.01f, 2f) * Random.Range(blinkSpeedMin, blinkSpeedMax) * Time.deltaTime;
+
+    protected override void ResetMe()
+    {
+        cupPos = cup.transform.position;
+        ResetEyesValue();
+    }
+
+    public override void Raise()
+    {
+        SleepyEyes();
+        ResetMe();
+        isCoffeeDrinked = false;
+    }
+
+    public override void Hide()
+    {
+        vignette.intensity.value = 0;
+        isCoffeeDrinked = true;
+    }
+
+    public override void Complete()
+    {
+        base.Complete();
+        isCoffeeDrinked = true;
+    }
+
+
+    private void OnDisable() => ResetMe();
 }
