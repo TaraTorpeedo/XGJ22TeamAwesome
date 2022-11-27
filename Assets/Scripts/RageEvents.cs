@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RageEvents : MonoBehaviour
 {
     public bool EventIsOn = false;
+    public GameObject GameOverScreen;
 
     //ClickEventVariables
     int clicks;
@@ -107,6 +108,7 @@ public class RageEvents : MonoBehaviour
 
         Player.GetComponent<Animator>().SetBool("IsRaging", false);
         Player.GetComponent<Animator>().SetBool("HitMonitor", true);
+        GameOverScreen.SetActive(true);
 
     }
 

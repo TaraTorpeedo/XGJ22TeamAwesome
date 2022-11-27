@@ -7,6 +7,7 @@ public class Calendar : MonoBehaviour
     Animator anim;
 
     public TimeManager timeManager;
+    public GameObject WinnerScreen;
 
     bool isNewDay = true;
     bool saturdayDone = false;
@@ -57,7 +58,7 @@ public class Calendar : MonoBehaviour
                 {
                     if (timeManager.GetHour() - StartHour * -1 < 20)
                     {
-                        Debug.Log("Win");
+                        WinnerScreen.SetActive(true);
                         Time.timeScale = 0;
                     }
                 }
