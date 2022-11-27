@@ -14,6 +14,7 @@ public class StringObserver : MonoBehaviour
     {
         if (data == null) return;
         UI = GetComponent<TextMeshProUGUI>();
+        data.Set("");
         stringReactive = new StringReactiveProperty(data.Value);
         stringReactive
             .ObserveEveryValueChanged(v => data.Value)

@@ -28,6 +28,13 @@ public class RageEvents : MonoBehaviour
 
     public GameObject Player;
     [SerializeField] TaskManager TaskManager;
+    [SerializeField] StringData errorMessage;
+    [SerializeField] IntData rageState;
+
+    private void Start()
+    {
+        rageState.Value = 0;
+    }
     private void Update()
     {
         if (EventIsOn)
@@ -57,6 +64,8 @@ public class RageEvents : MonoBehaviour
                     ResetValues();
                     EventIsOn = false;
                     RagePanel.SetActive(false);
+                    errorMessage.Set("");
+                    rageState.Value = 0;
                     TaskManager.ActivateRandomTask();
                 }
             }
@@ -102,6 +111,7 @@ public class RageEvents : MonoBehaviour
             random = Random.Range(0, SwearWords.Length);
             SwearText.gameObject.SetActive(true);
             SwearText.text = SwearWords[random];
+            rageState.Value = 1;
         }
     }
 

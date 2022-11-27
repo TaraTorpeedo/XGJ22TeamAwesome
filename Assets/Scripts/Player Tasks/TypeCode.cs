@@ -86,6 +86,7 @@ public class TypeCode : BaseTask
     public override void Raise()
     {
         base.Raise();
+        Started.Invoke();
         ResetMe();
         SetState(1);
     }
@@ -101,5 +102,6 @@ public class TypeCode : BaseTask
     {
         SetState(-1);
         base.Complete();
+        Completed.Invoke();
     }
 }
