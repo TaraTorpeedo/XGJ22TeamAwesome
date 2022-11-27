@@ -10,6 +10,7 @@ public class SleepyEvent : BaseTask
     [SerializeField] private GameObject cup;
     [SerializeField] private Transform cupPosition;
     [SerializeField] private Animator animator;
+   
 
     private Vignette vignette = null;
     private float eyesCloseValue = 0.0f;
@@ -122,20 +123,25 @@ public class SleepyEvent : BaseTask
 
     public override void Raise()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         SleepyEyes();
+        Started.Invoke();
         ResetMe();
         isCoffeeDrinked = false;
     }
 
     public override void Hide()
     {
+        Cursor.lockState = CursorLockMode.None;
         vignette.intensity.value = 0;
         isCoffeeDrinked = true;
+        errorMessage.Set(message);
     }
 
     public override void Complete()
     {
         base.Complete();
+        Completed.Invoke();
         isCoffeeDrinked = true;
     }
 

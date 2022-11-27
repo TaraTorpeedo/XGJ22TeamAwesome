@@ -11,6 +11,7 @@ public class CommitEvent : BaseTask
     public GameObject gitWindow;
     public string commitInputText;
 
+
     protected override void Start()
     {
         base.Start();
@@ -50,11 +51,20 @@ public class CommitEvent : BaseTask
     public override void Raise()
     {
         base.Raise();
+        Started.Invoke();
         ResetMe();
+        Cursor.lockState = CursorLockMode.Confined;
     }
-    public override void Hide() => base.Hide();
+    public override void Hide()
+    {
+        base.Hide();
+        Cursor.lockState = CursorLockMode.None;
+    }
 
 
-    public override void Complete() => base.Complete();
-
+    public override void Complete()
+    {
+        base.Complete();
+        Completed.Invoke();
+    }
 }

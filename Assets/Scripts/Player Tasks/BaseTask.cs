@@ -10,6 +10,8 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
     [SerializeField] protected UnityEvent Completed;
     [SerializeField] protected RageRandomizer rageManager;
     protected RectTransform rect;
+    [SerializeField]protected StringData errorMessage;
+    [SerializeField] protected string message;
     protected virtual void Start()
     {
         rect = GetComponent<RectTransform>();
@@ -32,6 +34,7 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
     public virtual void Hide()
     {
         rect.localScale = Vector2.one;
+        errorMessage.Set(message);
     }
 
     public virtual void Raise()

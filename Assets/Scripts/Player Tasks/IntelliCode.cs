@@ -74,7 +74,7 @@ public class IntelliCode : BaseTask
     {
         SetState(-1);
         yield return new WaitForEndOfFrame();
-        Started.Invoke();
+        Completed.Invoke();
         Screen.maxVisibleCharacters = 0;
         _raw = Script.GetRawText();
         _length = _raw.Length;
@@ -124,6 +124,7 @@ public class IntelliCode : BaseTask
         Screen.enabled = true;
         ResetMe();
         SetState(0);
+        Started.Invoke();
     }
 
     /*
