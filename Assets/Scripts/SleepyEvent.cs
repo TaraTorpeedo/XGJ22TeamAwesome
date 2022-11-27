@@ -125,13 +125,13 @@ public class SleepyEvent : BaseTask
 
     protected override void ResetMe()
     {
-        cupPos = cup.transform.position;
+        if(cupPos != null && cup != null)
+            cupPos = cup.transform.position;
         ResetEyesValue();
     }
 
     public override void Raise()
     {
-        Cursor.lockState = CursorLockMode.Confined;
         SleepyEyes();
         Started.Invoke();
         ResetMe();
@@ -140,7 +140,6 @@ public class SleepyEvent : BaseTask
 
     public override void Hide()
     {
-        Cursor.lockState = CursorLockMode.None;
         vignette.intensity.value = 0;
         isCoffeeDrinked = true;
         errorMessage.Set(message);

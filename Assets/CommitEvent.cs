@@ -54,12 +54,10 @@ public class CommitEvent : BaseTask
         base.Raise();
         Started.Invoke();
         ResetMe();
-        Cursor.lockState = CursorLockMode.Confined;
     }
     public override void Hide()
     {
         base.Hide();
-        Cursor.lockState = CursorLockMode.None;
     }
 
 

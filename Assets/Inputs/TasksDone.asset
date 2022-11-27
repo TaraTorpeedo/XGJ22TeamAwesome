@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae45664452ae77e4fb4e29ee3d52d650, type: 3}
   m_Name: TasksDone
   m_EditorClassIdentifier: 
+  _max: 15
