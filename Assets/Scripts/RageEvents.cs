@@ -15,6 +15,7 @@ public class RageEvents : MonoBehaviour
     KeyCode TheKey;
     public GameObject RagePanel;
     public Slider RageSlider;
+    public Image SliderFill;
     public TextMeshProUGUI KeyIndicator;
     public float rageIntencity;
 
@@ -35,8 +36,9 @@ public class RageEvents : MonoBehaviour
     {
         if (EventIsOn)
         {
-            AudioManager.instance.Play("Rage");
+            //AudioManager.instance.Play("Rage");
             RageSlider.value += Time.deltaTime * rageIntencity;
+            SliderFill.color = new Color(1, 1 - RageSlider.value / 10, 1 - RageSlider.value / 10);
             Player.GetComponent<Animator>().SetBool("IsRaging", true);
             RagePanel.SetActive(true);
 
