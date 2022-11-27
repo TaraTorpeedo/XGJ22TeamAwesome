@@ -23,6 +23,9 @@ public class RageEvents : MonoBehaviour
     public TextMeshProUGUI SwearText;
     public string[] SwearWords;
 
+    public GameObject PcScreen;
+    public GameObject MonitorCanvas;
+
     public GameObject Player;
     [SerializeField] TaskManager TaskManager;
     private void Update()
@@ -49,9 +52,8 @@ public class RageEvents : MonoBehaviour
                 RageSlider.value -= 0.2f;
                 if (DefeatedRage())
                 {
-                    Player.GetComponent<Animator>().SetBool("IsRaging", false);
                     Player.GetComponent<Animator>().SetBool("Chill", true);
-                    Debug.Log("You did it");
+                    Player.GetComponent<Animator>().SetBool("IsRaging", false);
                     ResetValues();
                     EventIsOn = false;
                     RagePanel.SetActive(false);
@@ -82,6 +84,7 @@ public class RageEvents : MonoBehaviour
     {
         RageSlider.value = 0;
         clicks = 0;
+        StartCoroutine(ResetAnimation());   
         KeyIndicator.gameObject.SetActive(false);
         SwearText.gameObject.SetActive(false);
     }
@@ -106,8 +109,32 @@ public class RageEvents : MonoBehaviour
     {
         EventIsOn = false;
 
+        RagePanel.SetActive(false);
+
+        Player.GetComponent<Animator>().SetBool("Chill", false);
         Player.GetComponent<Animator>().SetBool("IsRaging", false);
         Player.GetComponent<Animator>().SetBool("HitMonitor", true);
+
+        StartCoroutine(MonitorFly());
+
+
+    }
+
+    IEnumerator ResetAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Player.GetComponent<Animator>().SetBool("Chill", false);
+    }
+
+    IEnumerator MonitorFly()
+    {
+        yield return new WaitForSeconds(0.3f);
+        MonitorCanvas.SetActive(false);
+        PcScreen.GetComponent<Rigidbody>().isKinematic = false;
+        PcScreen.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;
+        PcScreen.GetComponent<Rigidbody>().velocity = Vector3.forward * -7f;
+
+        yield return new WaitForSeconds(0.5f);
         GameOverScreen.SetActive(true);
 
     }
