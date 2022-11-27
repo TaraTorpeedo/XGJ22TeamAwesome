@@ -390,6 +390,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6051496840272585867}
     m_Modifications:
+    - target: {fileID: 2229156175914181033, guid: 24d91a64fd5eed24aa1ae7563aa88131,
+        type: 3}
+      propertyPath: rageManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c,
+        type: 2}
+    - target: {fileID: 2229156175914181033, guid: 24d91a64fd5eed24aa1ae7563aa88131,
+        type: 3}
+      propertyPath: ScriptFactory
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da,
+        type: 2}
     - target: {fileID: 2229156175914181036, guid: 24d91a64fd5eed24aa1ae7563aa88131,
         type: 3}
       propertyPath: m_Pivot.x
@@ -671,6 +683,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4087533097333485395, guid: 0546085a376e74d4aad302242d5bd7bf,
+        type: 3}
+      propertyPath: rageManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c,
+        type: 2}
+    - target: {fileID: 4087533097333485395, guid: 0546085a376e74d4aad302242d5bd7bf,
+        type: 3}
+      propertyPath: ScriptFactory
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0546085a376e74d4aad302242d5bd7bf, type: 3}
 --- !u!224 &6051496839770405298 stripped
