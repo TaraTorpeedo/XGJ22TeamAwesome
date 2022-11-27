@@ -24,8 +24,9 @@ public class CommitEvent : BaseTask
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.name == commitButton.name)
+            if (hit.transform.name == commitButton.gameObject.name)
             {
+                Debug.Log("AAAAAAAAA");
                 pushButtonUI.SetActive(true);
                 pushButton.SetActive(true);
                 fetchButtonUI.SetActive(false);
