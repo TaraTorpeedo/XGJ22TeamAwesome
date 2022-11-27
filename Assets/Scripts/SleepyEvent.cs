@@ -11,7 +11,8 @@ public class SleepyEvent : BaseTask
     [SerializeField] private GameObject cup;
     [SerializeField] private Transform cupPosition;
     [SerializeField] private Animator animator;
-   
+    [SerializeField] private GameObject gameOverScreen;
+
 
     private Vignette vignette = null;
     private float eyesCloseValue = 0.0f;
@@ -74,6 +75,7 @@ public class SleepyEvent : BaseTask
 
     public void SleepyEyes()
     {
+        StartCoroutine(GoToSleep());
         if (eyesCloseValue < 0.9f)
         {
             eyesCloseValue += ApplyBlink();
@@ -87,6 +89,16 @@ public class SleepyEvent : BaseTask
         else
         {
             ResetEyesValue();
+        }
+    }
+
+    IEnumerator GoToSleep()
+    {
+        yield return new WaitForSeconds(5f);
+        if (isCoffeeDrinked == false)
+        {
+            gameOverScreen.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
