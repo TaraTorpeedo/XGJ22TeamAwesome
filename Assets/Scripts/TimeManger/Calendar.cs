@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Calendar : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class Calendar : MonoBehaviour
     bool saturdayDone = false;
 
     public GameObject FridayCard, SaturdayCard;
-
+    [SerializeField] UnityEvent Failed;
     public int StartHour;
+    [SerializeField] IntData TasksDone;
+    [SerializeField] IntData WinCondition;
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         anim = GetComponent<Animator>();
     }
 
@@ -58,8 +62,16 @@ public class Calendar : MonoBehaviour
                 {
                     if (timeManager.GetHour() - StartHour * -1 < 20)
                     {
-                        WinnerScreen.SetActive(true);
-                        Time.timeScale = 0;
+                        if (TasksDone.Value >= WinCondition.Max())
+                        {
+
+                            WinnerScreen.SetActive(true);
+                            Time.timeScale = 0;
+                        }
+                        else
+                        {
+                            Failed.Invoke();
+                        }
                     }
                 }
             }

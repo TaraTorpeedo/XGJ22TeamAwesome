@@ -1320,14 +1320,61 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
         type: 3}
+      propertyPath: TasksDone
+      value: 
+      objectReference: {fileID: 11400000, guid: b5a9f813a3edb5849ac6655d66b8e3ad,
+        type: 2}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
       propertyPath: timeManager
       value: 
       objectReference: {fileID: 1211187963}
     - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
         type: 3}
+      propertyPath: WinCondition
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ba74c093d16ee149ba93e19f41f42ed,
+        type: 2}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
       propertyPath: WinnerScreen
       value: 
       objectReference: {fileID: 278794022}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
+      propertyPath: Failed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
+      propertyPath: Failed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
+      propertyPath: Failed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1137256356}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
+      propertyPath: Failed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
+      propertyPath: Failed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Lose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
+      propertyPath: Failed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RageEvents, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580950783913954418, guid: 6e3b673f620708248b6ba1e85d778bd2,
+        type: 3}
+      propertyPath: Failed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3b673f620708248b6ba1e85d778bd2, type: 3}
 --- !u!1001 &176790449
@@ -6422,6 +6469,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e861bfed19ef9e419528c4862abb705, type: 3}
+--- !u!114 &1137256356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
+    type: 3}
+  m_PrefabInstance: {fileID: 693890426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ee7d6e6d99fea478a97c65f41e7f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1203280215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7419,7 +7478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: b5a9f813a3edb5849ac6655d66b8e3ad, type: 2}
   _prepend: 'Tasks left: '
-  _append: /30
+  _append: /
 --- !u!1001 &1286408166
 PrefabInstance:
   m_ObjectHideFlags: 0

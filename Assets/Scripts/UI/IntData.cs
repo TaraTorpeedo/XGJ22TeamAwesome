@@ -6,6 +6,10 @@ using UnityEngine;
 public class IntData : ScriptableObject
 {
     public int Value { get; set; }
+    [SerializeField] int _max;
+
+    public int Max() { return _max; }
+
     public void Increment()
     {
         Value++;

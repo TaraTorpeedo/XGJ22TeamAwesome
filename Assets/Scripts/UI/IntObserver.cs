@@ -20,7 +20,7 @@ public class IntObserver : MonoBehaviour
         Reactive
             .ObserveEveryValueChanged(v => data.Value)
             .TakeUntilDisable(this)
-            .Subscribe(d => UI.text = _prepend + data.Value.ToString() + _append);
+            .Subscribe(d => UI.text = _prepend + data.Value.ToString() + _append + ((data.Max() > 0) ? data.Max().ToString() : ""));
 
     }
 

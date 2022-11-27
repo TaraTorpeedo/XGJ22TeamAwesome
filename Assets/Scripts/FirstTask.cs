@@ -9,6 +9,7 @@ public class FirstTask : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         TasksDone.Value = 0;
         StartCoroutine(StartDelay());
     }

@@ -114,7 +114,7 @@ public class RageEvents : MonoBehaviour
         }
     }
 
-    void Lose()
+    public void Lose()
     {
 
         AudioManager.instance.Play("Rage");
