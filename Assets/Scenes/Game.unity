@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa5176da15e562439520cf168c54850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prompt: Testi teksti
+  _prompt: Commit and push changes
   _promptData: {fileID: 11400000, guid: 97ac8ad3ed9ce9f4aba61bcbb0682090, type: 2}
 --- !u!1 &50359643
 GameObject:
@@ -1749,8 +1749,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1102883516}
-  m_Father: {fileID: 1476869455}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1786,10 +1786,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3117,7 +3117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Rage
-    clip: {fileID: 8300000, guid: 8e44075809bb403489ba31c1320bb070, type: 3}
+    clip: {fileID: 8300000, guid: 3737e0901eef3f84e84745f059f6c202, type: 3}
     mixer: {fileID: 0}
     volume: 1
     pitch: 1
@@ -3138,7 +3138,21 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Cup
-    clip: {fileID: 8300000, guid: 11cc64dcc7224be489b42939c8b3d5cb, type: 3}
+    clip: {fileID: 8300000, guid: a31ad16585b758441b243e392fa3c24a, type: 3}
+    mixer: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Yell
+    clip: {fileID: 8300000, guid: 671499764fff0074785447d3c6d7a029, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.8
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sip
+    clip: {fileID: 8300000, guid: ec6429ee652d03347b71462d4ee658d7, type: 3}
     mixer: {fileID: 0}
     volume: 1
     pitch: 1
@@ -3466,7 +3480,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690233914}
   m_LocalRotation: {x: 0.04242617, y: -0.0042658513, z: -0.0055264337, w: 0.99907523}
-  m_LocalPosition: {x: 0, y: 0, z: 0.188}
+  m_LocalPosition: {x: 0, y: 0, z: 0.109}
   m_LocalScale: {x: 0.8, y: 0.2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3475,7 +3489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.166, y: 0.745}
+  m_AnchoredPosition: {x: 0.167, y: 0.752}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &690233916
@@ -3551,7 +3565,7 @@ PrefabInstance:
     - target: {fileID: 8968684855810359574, guid: 782ea513041391b49920c3f166d5b973,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 8968684855810359574, guid: 782ea513041391b49920c3f166d5b973,
         type: 3}
@@ -3657,18 +3671,40 @@ PrefabInstance:
       objectReference: {fileID: 1670347516}
     - target: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
         type: 3}
-      propertyPath: MonitorCanvas
-      value: 
-      objectReference: {fileID: 923054220}
       propertyPath: errorMessage
       value: 
       objectReference: {fileID: 11400000, guid: 2626069eb4694d649a781662f8eed880,
         type: 2}
     - target: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
         type: 3}
+      propertyPath: MonitorCanvas
+      value: 
+      objectReference: {fileID: 923054220}
+    - target: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
+        type: 3}
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 1376415829}
+    - target: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
+        type: 3}
+      propertyPath: SwearWords.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
+        type: 3}
+      propertyPath: SwearWords.Array.data[1]
+      value: '*UKING CULLING MASK!!!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
+        type: 3}
+      propertyPath: SwearWords.Array.data[4]
+      value: "%#&\xA3!#"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968684855810359577, guid: 782ea513041391b49920c3f166d5b973,
+        type: 3}
+      propertyPath: SwearWords.Array.data[5]
+      value: Shit fuck my life!!
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8968684855810359572, guid: 782ea513041391b49920c3f166d5b973, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 782ea513041391b49920c3f166d5b973, type: 3}
@@ -4001,7 +4037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hlihkjhkjhghgjjhghjgv
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4302,7 +4338,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832616467
 GameObject:
@@ -4383,8 +4419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 268}
-  m_SizeDelta: {x: 900, y: 200}
+  m_AnchoredPosition: {x: 0, y: 210}
+  m_SizeDelta: {x: 1622, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &859551791
 MonoBehaviour:
@@ -4406,7 +4442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Over!
+  m_text: You lack the willpower to work
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4434,8 +4470,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4530,7 +4566,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908557800}
   m_LocalRotation: {x: 0.04242617, y: -0.0042658513, z: -0.0055264337, w: 0.99907523}
-  m_LocalPosition: {x: 0, y: 0, z: 0.063}
+  m_LocalPosition: {x: 0, y: 0, z: -0.123}
   m_LocalScale: {x: 0.8, y: 0.2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4539,7 +4575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.815, y: -0.739}
+  m_AnchoredPosition: {x: -0.813, y: -0.723}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &908557802
@@ -7297,7 +7333,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371038479 stripped
 GameObject:
@@ -7366,8 +7402,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1320409053}
-  m_Father: {fileID: 1476869455}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7403,10 +7439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -7537,7 +7573,7 @@ RectTransform:
   - {fileID: 61299631}
   - {fileID: 748856177}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8141,7 +8177,7 @@ PrefabInstance:
     - target: {fileID: 3712620507800294957, guid: 81c15d0f060dcb24591fd9052df138ff,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3712620507800294957, guid: 81c15d0f060dcb24591fd9052df138ff,
         type: 3}
@@ -8195,12 +8231,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81c15d0f060dcb24591fd9052df138ff, type: 3}
---- !u!4 &1476869455 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3712620507800294957, guid: 81c15d0f060dcb24591fd9052df138ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 1476869454}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1484544852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9935,7 +9965,7 @@ Transform:
   - {fileID: 149693191}
   - {fileID: 166766471}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1761479061
 PrefabInstance:
@@ -11843,8 +11873,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 268}
-  m_SizeDelta: {x: 900, y: 200}
+  m_AnchoredPosition: {x: 0, y: 203.6272}
+  m_SizeDelta: {x: 1622, y: 232.5847}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1980038902
 MonoBehaviour:
@@ -11866,7 +11896,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Win!!
+  m_text: jam game is ready! you have willpower within!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11894,8 +11924,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12223,7 +12253,7 @@ Transform:
   - {fileID: 1917398755}
   - {fileID: 517097251}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2055459657
 PrefabInstance:
@@ -13188,7 +13218,7 @@ PrefabInstance:
     - target: {fileID: 1038125711091020900, guid: 563560d9cd2e6dd48a1e4b7018e8250b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1038125711091020900, guid: 563560d9cd2e6dd48a1e4b7018e8250b,
         type: 3}
@@ -16007,7 +16037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa5176da15e562439520cf168c54850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prompt: drink coffee
+  _prompt: You need to drink some coffee
   _promptData: {fileID: 11400000, guid: 97ac8ad3ed9ce9f4aba61bcbb0682090, type: 2}
 --- !u!114 &6051496838894652360
 MonoBehaviour:
@@ -16255,17 +16285,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051496838894652373}
-  m_LocalRotation: {x: 0.000000018626451, y: 4.656613e-10, z: 1.6007107e-10, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.29302722}
-  m_LocalScale: {x: 0.51815486, y: 0.51815516, z: 0.518155}
+  m_LocalRotation: {x: -0.00018110125, y: -0.016895996, z: -0.0014384022, w: -0.99985623}
+  m_LocalPosition: {x: 0, y: 0, z: 0.325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 771947372}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.018, y: 1.936, z: 0.165}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00000047683716, y: 0}
+  m_AnchoredPosition: {x: 0.168, y: -0.287}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6051496838894652373
@@ -16296,17 +16326,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051496838910087969}
-  m_LocalRotation: {x: 0.000000018626451, y: 4.656613e-10, z: 1.6007107e-10, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.29737654}
-  m_LocalScale: {x: 0.51815486, y: 0.51815516, z: 0.518155}
+  m_LocalRotation: {x: -0.00018110125, y: -0.016895996, z: -0.0014384022, w: -0.99985623}
+  m_LocalPosition: {x: 0, y: 0, z: 0.325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1041841585}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.018, y: 1.936, z: 0.165}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000047683716, y: 0}
+  m_AnchoredPosition: {x: 0.168, y: -0.287}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6051496838910087969
