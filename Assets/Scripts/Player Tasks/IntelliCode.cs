@@ -9,21 +9,31 @@ public class IntelliCode : BaseTask
 {
     [SerializeField] IntData data;
     [SerializeField] UnityEvent PhaseOneCompleted;
+    [SerializeField] ScriptFactory ScriptFactory;
     TextMeshPro Screen;
-    Script _script;
+    Script Script = new Script();
 
     int _taskState = 0;
     [SerializeField] float typingSpeed = 0.1f;
-    int length;
-    string raw;
+    int _length;
+    string _raw;
     WaitForSeconds TypingDelay;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        _script = Script.CreateRandom();
+
         InitializeScreen();
         SetState(-1);
+    }
+
+    private void GetRandomScript()
+    {
+        ScriptFactory.CreateRandom(Script);
+        _raw = Script.GetRawText();
+        Screen.text = Script.GenerateCode();
+        Debug.Log($"Reset intellicode: {Script.MethodType} {Script.Name}");
+        Debug.Log(_raw);
     }
 
     private void InitializeScreen()
@@ -31,7 +41,6 @@ public class IntelliCode : BaseTask
         TypingDelay = new WaitForSeconds(typingSpeed);
 
         Screen = GetComponent<TextMeshPro>();
-        Screen.text = _script.GenerateCode();
         ResetMe();
     }
 
@@ -49,14 +58,14 @@ public class IntelliCode : BaseTask
 
     public void SuggestCode()
     {
-        Screen.text = _script.PlaceholderText();
+        Screen.text = Script.PlaceholderText();
     }
 
     public override void Complete()
     {
         Debug.Log("Complete");
         SetState(-1);
-        Screen.text = _script.GenerateCode();
+        Screen.text = Script.GenerateCode();
         Completed.Invoke();
         base.Complete();
     }
@@ -67,15 +76,15 @@ public class IntelliCode : BaseTask
         yield return new WaitForEndOfFrame();
         Started.Invoke();
         Screen.maxVisibleCharacters = 0;
-        raw = _script.GetRawText();
-        length = raw.Length;
-        while (length > Screen.maxVisibleCharacters)
+        _raw = Script.GetRawText();
+        _length = _raw.Length;
+        while (_length > Screen.maxVisibleCharacters)
         {
             Screen.maxVisibleCharacters++;
-            if (raw[Screen.maxVisibleCharacters - 1] == '.')
+            if (_raw[Screen.maxVisibleCharacters - 1] == '.')
             {
                 yield return new WaitForSeconds(2f);
-                Screen.maxVisibleCharacters += _script.Member.Length + _script.MemberFunction.Length + 4;
+                Screen.maxVisibleCharacters += Script.Member.Length + Script.MemberFunction.Length + 4;
                 SetState(1);
                 break;
             }
@@ -97,7 +106,7 @@ public class IntelliCode : BaseTask
 
     protected override void ResetMe()
     {
-        _script = Script.CreateRandom();
+        GetRandomScript();
         Screen.maxVisibleCharacters = 0;
         SetState(0);
     }
