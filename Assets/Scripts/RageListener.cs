@@ -10,6 +10,7 @@ public class RageListener : MonoBehaviour, IRage
 
     public void InvokeRage()
     {
+        AudioManager.instance.Play("Yell");
         rageEvent.Invoke();
     }
 

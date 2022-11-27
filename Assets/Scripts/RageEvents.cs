@@ -47,7 +47,6 @@ public class RageEvents : MonoBehaviour
     {
         if (EventIsOn)
         {
-            //AudioManager.instance.Play("Rage");
             RageSlider.value += Time.deltaTime * rageIntencity;
             SliderFill.color = new Color(1, 1 - RageSlider.value / 10, 1 - RageSlider.value / 10);
             Player.GetComponent<Animator>().SetBool("IsRaging", true);
@@ -117,10 +116,11 @@ public class RageEvents : MonoBehaviour
 
     void Lose()
     {
+
+        AudioManager.instance.Play("Rage");
         EventIsOn = false;
 
         RagePanel.SetActive(false);
-
         Player.GetComponent<Animator>().SetBool("Chill", false);
         Player.GetComponent<Animator>().SetBool("IsRaging", false);
         Player.GetComponent<Animator>().SetBool("HitMonitor", true);

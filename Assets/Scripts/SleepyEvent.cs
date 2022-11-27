@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -97,6 +98,7 @@ public class SleepyEvent : BaseTask
         {
             if (hit.transform.name == cup.name)
             {
+                StartCoroutine(WaitToSip());
                 isCoffeeDrinked = true;
                 vignette.intensity.value = 0.0f;
                 ResetEyesValue();
@@ -105,6 +107,12 @@ public class SleepyEvent : BaseTask
             }
         }
 
+    }
+
+    IEnumerator WaitToSip()
+    {
+        yield return new WaitForSeconds(1f);
+        AudioManager.instance.Play("Sip");
     }
     
     private void ResetEyesValue()
