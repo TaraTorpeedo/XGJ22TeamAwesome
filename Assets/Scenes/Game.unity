@@ -210,6 +210,8 @@ GameObject:
   - component: {fileID: 13998549}
   - component: {fileID: 13998548}
   - component: {fileID: 13998547}
+  - component: {fileID: 13998550}
+  - component: {fileID: 13998551}
   m_Layer: 8
   m_Name: GitTask
   m_TagString: Untagged
@@ -302,6 +304,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13998545}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &13998550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13998545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ca11604fb57c445ab4bc714e3b63c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskManager: {fileID: 11400000, guid: eee2309fc236c2d4a95f7c8149ab31dd, type: 2}
+  Started:
+    m_PersistentCalls:
+      m_Calls: []
+  Completed:
+    m_PersistentCalls:
+      m_Calls: []
+  rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
+  pushButton: {fileID: 690233914}
+  commitButton: {fileID: 908557800}
+  fetchButtonUI: {fileID: 417803120}
+  pushButtonUI: {fileID: 1974289968}
+  commitInput: {fileID: 223721872}
+  gitWindow: {fileID: 13998545}
+  commitInputText: Is this working?!
+--- !u!114 &13998551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13998545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b316ed51a45885744bd73c6c7e3616e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputEvent: {fileID: 11400000, guid: c1dc1e655fde8cf409ff1e23b1f93819, type: 2}
+  _respone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 13998550}
+        m_TargetAssemblyTypeName: CommitEvent, Assembly-CSharp
+        m_MethodName: GitButtonsEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &50359643
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +391,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 771947372}
-  - {fileID: 6051496838894652372}
   m_Father: {fileID: 923054221}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2572,7 +2628,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1041841585}
-  - {fileID: 6051496838910087968}
   m_Father: {fileID: 923054221}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3404,7 +3459,8 @@ PrefabInstance:
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 1376415829}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8968684855810359572, guid: 782ea513041391b49920c3f166d5b973, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 782ea513041391b49920c3f166d5b973, type: 3}
 --- !u!1 &698866375
 GameObject:
@@ -3771,7 +3827,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -320.581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6051496838894652372}
   m_Father: {fileID: 50359644}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -4.866, y: 0.463, z: 0.614}
@@ -3793,14 +3850,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: bdf78bb15ed74b8479187e7d2eff7db7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3821,6 +3878,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1452014647}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &823809331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823809333}
+  - component: {fileID: 823809332}
+  m_Layer: 0
+  m_Name: FirstTask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &823809332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823809331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd9c9845cfc93442bf1ad611650ca4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskManager: {fileID: 11400000, guid: eee2309fc236c2d4a95f7c8149ab31dd, type: 2}
+--- !u!4 &823809333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823809331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.1229894, y: 1.7258576, z: 0.69409305}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832616467
 GameObject:
   m_ObjectHideFlags: 0
@@ -4622,13 +4724,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -320.581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6051496838910087968}
   m_Father: {fileID: 409160233}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -4.866, y: 0.463, z: 0.614}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.556973, y: -0.9499209}
+  m_AnchoredPosition: {x: -2.708, y: -1.059}
   m_SizeDelta: {x: 2.5, y: 1.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041841586
@@ -4644,14 +4747,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: bdf78bb15ed74b8479187e7d2eff7db7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6140,7 +6243,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376415829
 GameObject:
@@ -6343,7 +6446,7 @@ RectTransform:
   m_Children:
   - {fileID: 1670347515}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9362,7 +9465,6 @@ GameObject:
   - component: {fileID: 1997675895}
   - component: {fileID: 1997675896}
   - component: {fileID: 1997675898}
-  - component: {fileID: 1997675899}
   m_Layer: 6
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -9474,23 +9576,6 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
---- !u!114 &1997675899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997675891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4ca11604fb57c445ab4bc714e3b63c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushButton: {fileID: 690233914}
-  commitButton: {fileID: 908557800}
-  fetchButtonUI: {fileID: 417803120}
-  pushButtonUI: {fileID: 1974289968}
-  commitInput: {fileID: 223721872}
 --- !u!1 &2010099406
 GameObject:
   m_ObjectHideFlags: 0
@@ -12618,6 +12703,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5820985a34f23c4496f327774abbbb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taskManager: {fileID: 11400000, guid: eee2309fc236c2d4a95f7c8149ab31dd, type: 2}
+  Started:
+    m_PersistentCalls:
+      m_Calls: []
+  Completed:
+    m_PersistentCalls:
+      m_Calls: []
+  rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
   volume: {fileID: 1997675898}
   blinkSpeedMin: 0.5
   blinkSpeedMax: 1.5
@@ -12643,18 +12736,6 @@ MonoBehaviour:
       - m_Target: {fileID: 5557024370803792563}
         m_TargetAssemblyTypeName: SleepyEvent, Assembly-CSharp
         m_MethodName: DrinkCoffee
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1997675899}
-        m_TargetAssemblyTypeName: CommitEvent, Assembly-CSharp
-        m_MethodName: GitButtonsEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12724,6 +12805,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  ScriptFactory: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da, type: 2}
   typingSpeed: 0.1
 --- !u!114 &6051496838894652361
 MonoBehaviour:
@@ -12843,10 +12925,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.05
-  m_fontSizeBase: 36
+  m_fontSize: 1
+  m_fontSizeBase: 1
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0.2
   m_fontSizeMax: 6
   m_fontStyle: 0
@@ -12895,18 +12977,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051496838894652373}
-  m_LocalRotation: {x: 0.042426188, y: -0.004265852, z: -0.0055264337, w: -0.99907523}
-  m_LocalPosition: {x: 0, y: 0, z: -320.87717}
-  m_LocalScale: {x: 0.51815486, y: 0.51815504, z: 0.518155}
+  m_LocalRotation: {x: 0.000000018626451, y: 4.656613e-10, z: 1.6007107e-10, w: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.29302722}
+  m_LocalScale: {x: 0.51815486, y: 0.51815516, z: 0.518155}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 50359644}
-  m_RootOrder: 1
+  m_Father: {fileID: 771947372}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.7343, y: -0.762}
-  m_SizeDelta: {x: 3.2599, y: 0.4389}
+  m_AnchoredPosition: {x: 0.00000047683716, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6051496838894652373
 GameObject:
@@ -12936,18 +13018,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051496838910087969}
-  m_LocalRotation: {x: 0.042426188, y: -0.004265852, z: -0.0055264337, w: -0.99907523}
-  m_LocalPosition: {x: 0, y: 0, z: -320.87717}
-  m_LocalScale: {x: 0.51815486, y: 0.51815504, z: 0.518155}
+  m_LocalRotation: {x: 0.000000018626451, y: 4.656613e-10, z: 1.6007107e-10, w: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.29737654}
+  m_LocalScale: {x: 0.51815486, y: 0.51815516, z: 0.518155}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 409160233}
-  m_RootOrder: 1
+  m_Father: {fileID: 1041841585}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.569, y: -0.762}
-  m_SizeDelta: {x: 15.3689, y: 0.4389}
+  m_AnchoredPosition: {x: -0.00000047683716, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6051496838910087969
 GameObject:
@@ -13033,6 +13115,7 @@ MonoBehaviour:
   rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
   _codeBlock: "<color=\"blue\">void Update</color>()\n{\n\t<color=\"yellow\">FindObjectOfType</color><<color=\"green\">Camera</color>>();\n}"
   _typingSpeed: 0.1
+  ScriptFactory: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da, type: 2}
   typeState: {fileID: 11400000, guid: 33483616ea94ee043ab2af613c13dce8, type: 2}
 --- !u!114 &6051496839133266962
 MonoBehaviour:
@@ -13082,10 +13165,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.05
-  m_fontSizeBase: 36
+  m_fontSize: 1
+  m_fontSizeBase: 1
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0.2
   m_fontSizeMax: 6
   m_fontStyle: 0

@@ -8,7 +8,12 @@ public class FirstTask : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        taskManager.ActivateFirstTask();
+        StartCoroutine(StartDelay());
     }
 
+    IEnumerator StartDelay()
+    {
+        yield return new WaitForEndOfFrame();
+        taskManager.ActivateFirstTask();
+    }
 }
