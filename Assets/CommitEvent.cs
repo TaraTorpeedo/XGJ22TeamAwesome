@@ -1,17 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using static Unity.Burst.Intrinsics.X86.Avx;
 
-public class CommitEvent : MonoBehaviour
+public class CommitEvent : BaseTask
 {
     public GameObject pushButton;
     public GameObject commitButton;
     public GameObject fetchButtonUI;
     public GameObject pushButtonUI;
     public TMP_InputField commitInput;
+    public GameObject gitWindow;
+    public string commitInputText;
+
+    protected override void Start()
+    {
+        base.Start();
+        commitInputText = commitInput.text;
+        ResetMe();
+    }
     public void GitButtonsEvent()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -29,8 +34,27 @@ public class CommitEvent : MonoBehaviour
             if (hit.transform.name == pushButton.name)
             {
                 AudioManager.instance.Play("Click");
-                //taski complite
+                Complete();
             }
         }
     }
+    private void OnDisable() => ResetMe();
+
+    protected override void ResetMe()
+    {
+        commitInput.text = commitInputText;
+        pushButtonUI.SetActive(false);
+        pushButton.SetActive(false);
+        fetchButtonUI.SetActive(true);
+    }
+    public override void Raise()
+    {
+        base.Raise();
+        ResetMe();
+    }
+    public override void Hide() => base.Hide();
+
+
+    public override void Complete() => base.Complete();
+
 }
