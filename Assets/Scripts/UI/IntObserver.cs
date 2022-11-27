@@ -9,6 +9,8 @@ public class IntObserver : MonoBehaviour
     IntReactiveProperty Reactive;
     [SerializeField] IntData data;
     TextMeshProUGUI UI;
+    [SerializeField] string _prepend = "";
+    [SerializeField] string _append = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class IntObserver : MonoBehaviour
         Reactive
             .ObserveEveryValueChanged(v => data.Value)
             .TakeUntilDisable(this)
-            .Subscribe(d => UI.text = data.Value.ToString());
+            .Subscribe(d => UI.text = _prepend + data.Value.ToString() + _append);
 
     }
 

@@ -74,6 +74,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
+  errorMessage: {fileID: 11400000, guid: 2626069eb4694d649a781662f8eed880, type: 2}
+  message: 
+  TasksDone: {fileID: 11400000, guid: b5a9f813a3edb5849ac6655d66b8e3ad, type: 2}
   _codeBlock: "<color=\"blue\">void Update</color>()\n{\n\t<color=\"yellow\">FindObjectOfType</color><<color=\"green\">Camera</color>>();\n}"
   _typingSpeed: 0.1
   ScriptFactory: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da, type: 2}

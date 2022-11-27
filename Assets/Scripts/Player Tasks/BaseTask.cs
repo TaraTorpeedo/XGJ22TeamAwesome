@@ -12,6 +12,7 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
     protected RectTransform rect;
     [SerializeField]protected StringData errorMessage;
     [SerializeField] protected string message;
+    [SerializeField] protected IntData TasksDone;
     protected virtual void Start()
     {
         rect = GetComponent<RectTransform>();
@@ -20,6 +21,7 @@ public abstract class BaseTask : MonoBehaviour, IGameTask
 
     public virtual void Complete()
     {
+        TasksDone.Increment();
         StartCoroutine(TaskIntermission());
     }
 

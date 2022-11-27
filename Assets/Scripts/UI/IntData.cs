@@ -6,6 +6,9 @@ using UnityEngine;
 public class IntData : ScriptableObject
 {
     public int Value { get; set; }
-
+    public void Increment()
+    {
+        Value++;
+    }
 
 }

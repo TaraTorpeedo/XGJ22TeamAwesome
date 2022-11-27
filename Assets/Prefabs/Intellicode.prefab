@@ -115,6 +115,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
+  errorMessage: {fileID: 11400000, guid: 2626069eb4694d649a781662f8eed880, type: 2}
+  message: 
+  TasksDone: {fileID: 11400000, guid: b5a9f813a3edb5849ac6655d66b8e3ad, type: 2}
   data: {fileID: 11400000, guid: 8ef8fad6f1bd04446b1dba8d151fc2a2, type: 2}
   PhaseOneCompleted:
     m_PersistentCalls:
