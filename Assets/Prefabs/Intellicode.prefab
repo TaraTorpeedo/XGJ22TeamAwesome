@@ -114,6 +114,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  rageManager: {fileID: 11400000, guid: 437d655ab40552042b7244c9fb63b47c, type: 2}
   data: {fileID: 11400000, guid: 8ef8fad6f1bd04446b1dba8d151fc2a2, type: 2}
   PhaseOneCompleted:
     m_PersistentCalls:
@@ -142,6 +143,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  ScriptFactory: {fileID: 11400000, guid: 7e66a9aa713f5034c861f595e84188da, type: 2}
   typingSpeed: 0.1
 --- !u!114 &4087533097333485394
 MonoBehaviour:
