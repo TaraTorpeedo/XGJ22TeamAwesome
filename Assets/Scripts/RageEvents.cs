@@ -6,69 +6,97 @@ using UnityEngine.UI;
 
 public class RageEvents : MonoBehaviour
 {
-    bool EventIsOn = false;
+    public bool EventIsOn = false;
+    public GameObject GameOverScreen;
 
     //ClickEventVariables
     int clicks;
     public int clicksNeeded;
     public KeyCode[] KeysToSmash;
     KeyCode TheKey;
+    public GameObject RagePanel;
     public Slider RageSlider;
+    public Image SliderFill;
     public TextMeshProUGUI KeyIndicator;
+    public float rageIntencity;
 
     public TextMeshProUGUI SwearText;
     public string[] SwearWords;
 
+    public GameObject PcScreen;
+    public GameObject MonitorCanvas;
+
+    public GameObject Player;
+    [SerializeField] TaskManager TaskManager;
+    [SerializeField] StringData errorMessage;
+    [SerializeField] IntData rageState;
+
+    private void Start()
+    {
+        rageState.Value = 0;
+    }
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (EventIsOn)
         {
-            InitValues();
+            CallRageEvent(0);
         }
-
-        CallRageEvent(0);
     }
 
     public void HitMonitor()
     {
         if (EventIsOn)
         {
-            RageSlider.value += 0.01f;
+            RageSlider.value += Time.deltaTime * rageIntencity;
+            SliderFill.color = new Color(1, 1 - RageSlider.value / 10, 1 - RageSlider.value / 10);
+            Player.GetComponent<Animator>().SetBool("IsRaging", true);
+            RagePanel.SetActive(true);
 
             if (Input.GetKeyDown(TheKey))
             {
                 clicks++;
                 RageSlider.value -= 0.2f;
-                if (clicks >= clicksNeeded)
+                if (DefeatedRage())
                 {
-                    Debug.Log("You did it");
+                    Player.GetComponent<Animator>().SetBool("Chill", true);
+                    Player.GetComponent<Animator>().SetBool("IsRaging", false);
                     ResetValues();
                     EventIsOn = false;
+                    RagePanel.SetActive(false);
+                    errorMessage.Set("");
+                    rageState.Value = 0;
+                    TaskManager.ActivateRandomTask();
                 }
             }
 
             if (RageSlider.value >= RageSlider.maxValue)
             {
-                Debug.Log("Lose");
-                EventIsOn = false;
+                Lose();
             }
         }
+    }
+
+    private bool DefeatedRage()
+    {
+        return clicks >= clicksNeeded;
     }
 
     public void CallRageEvent(int RageEventIndex)
     {
         if (RageEventIndex == 0)
             HitMonitor();
+
     }
 
     void ResetValues()
     {
         RageSlider.value = 0;
         clicks = 0;
+        StartCoroutine(ResetAnimation());   
         KeyIndicator.gameObject.SetActive(false);
         SwearText.gameObject.SetActive(false);
     }
-    void InitValues()
+    public void InitValues()
     {
         if (!EventIsOn)
         {
@@ -82,8 +110,45 @@ public class RageEvents : MonoBehaviour
             random = Random.Range(0, SwearWords.Length);
             SwearText.gameObject.SetActive(true);
             SwearText.text = SwearWords[random];
+            rageState.Value = 1;
         }
     }
+
+    public void Lose()
+    {
+
+        AudioManager.instance.Play("Rage");
+        EventIsOn = false;
+
+        RagePanel.SetActive(false);
+        Player.GetComponent<Animator>().SetBool("Chill", false);
+        Player.GetComponent<Animator>().SetBool("IsRaging", false);
+        Player.GetComponent<Animator>().SetBool("HitMonitor", true);
+
+        StartCoroutine(MonitorFly());
+
+
+    }
+
+    IEnumerator ResetAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Player.GetComponent<Animator>().SetBool("Chill", false);
+    }
+
+    IEnumerator MonitorFly()
+    {
+        yield return new WaitForSeconds(0.3f);
+        MonitorCanvas.SetActive(false);
+        PcScreen.GetComponent<Rigidbody>().isKinematic = false;
+        PcScreen.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;
+        PcScreen.GetComponent<Rigidbody>().velocity = Vector3.forward * -7f;
+
+        yield return new WaitForSeconds(0.5f);
+        GameOverScreen.SetActive(true);
+
+    }
+
 }
 
 
